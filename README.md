@@ -4,7 +4,7 @@ Heterogeneous Sparse Graph Attention.
 
 ## Requirements
 
-Install PyTorch first (matching your platform), then install project requirements:
+Install the full ML/DL toolkit dependencies (PyTorch, PyG, GraphGym runtime, and data-science utilities):
 
 ```bash
 pip install -r requirements.txt
