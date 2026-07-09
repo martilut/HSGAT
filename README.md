@@ -2,6 +2,14 @@
 
 Heterogeneous Sparse Graph Attention.
 
+## Requirements
+
+Install PyTorch first (matching your platform), then install project requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## GraphGym base setup
 
 This repository now includes the GraphGym base files directly under `graphgym/` (sourced from PyG GraphGym).
