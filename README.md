@@ -25,6 +25,21 @@ poetry run bash graphgym/run_single.sh
 poetry run bash graphgym/run_batch.sh
 ```
 
+Modify and update the Poetry environment when dependencies change:
+
+```bash
+# add/remove dependencies
+poetry add <package>
+poetry remove <package>
+
+# refresh lockfile and sync environment
+poetry lock
+poetry install --no-root
+
+# update installed dependencies to latest allowed versions
+poetry update
+```
+
 ## GraphGym base setup
 
 This repository now includes the GraphGym base files directly under `graphgym/` (sourced from PyG GraphGym).
