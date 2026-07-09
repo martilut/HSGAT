@@ -10,6 +10,21 @@ Install the full ML/DL toolkit dependencies (PyTorch, PyG, GraphGym runtime, and
 pip install -r requirements.txt
 ```
 
+Or use Poetry-managed environments:
+
+```bash
+pip install poetry
+poetry env use python3
+poetry install --no-root
+```
+
+Run GraphGym commands inside the Poetry environment:
+
+```bash
+poetry run bash graphgym/run_single.sh
+poetry run bash graphgym/run_batch.sh
+```
+
 ## GraphGym base setup
 
 This repository now includes the GraphGym base files directly under `graphgym/` (sourced from PyG GraphGym).
