@@ -4,11 +4,11 @@ Heterogeneous Sparse Graph Attention.
 
 ## GraphGym base setup
 
-This repository starts from a GraphGym customization workflow. Initialize from the GraphGym base by cloning PyG and moving into its GraphGym directory:
+This repository now includes the GraphGym base files directly under `graphgym/` (sourced from PyG GraphGym).
+Use the in-repo copy as the starting point:
 
 ```bash
-git clone https://github.com/pyg-team/pytorch_geometric.git
-cd pytorch_geometric/graphgym
+cd graphgym
 ```
 
 ## Quick start
@@ -39,6 +39,7 @@ accelerator: cpu
 - Example launch:
 
 ```bash
+cd graphgym
 python main.py --cfg configs/pyg/example_node.yaml --repeat 3
 ```
 
@@ -52,6 +53,7 @@ python main.py --cfg configs/pyg/example_node.yaml --repeat 3
 - Generate config files:
 
 ```bash
+cd graphgym
 python configs_gen.py --config configs/${DIR}/${CONFIG}.yaml \
   --config_budget configs/${DIR}/${CONFIG}.yaml \
   --grid grids/${DIR}/${GRID}.txt \
@@ -77,8 +79,7 @@ Supported customizable module areas include:
 
 - `custom_graphgym/act/`
 - `custom_graphgym/config/`
-- `custom_graphgym/feature_augment/`
-- `custom_graphgym/feature_encoder/`
+- `custom_graphgym/encoder/`
 - `custom_graphgym/head/`
 - `custom_graphgym/layer/`
 - `custom_graphgym/loader/`
