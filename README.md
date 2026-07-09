@@ -141,6 +141,7 @@ Pipeline behavior:
   - Installs dependencies with Poetry.
   - Validates GraphGym shell scripts with `bash -n`.
   - Validates Python modules with `python -m compileall graphgym`.
+  - Runs unit tests with `python -m unittest discover`.
 - **CD** (`main`/`master` pushes or manual trigger, after CI passes):
   - Packages `graphgym/`, `README.md`, `requirements.txt`, and `pyproject.toml`.
   - Uploads `graphgym-project.tar.gz` as a workflow artifact.

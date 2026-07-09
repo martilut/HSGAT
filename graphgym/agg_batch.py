@@ -15,5 +15,10 @@ def parse_args():
     return parser.parse_args()
 
 
-args = parse_args()
-agg_batch(args.dir, args.metric)
+def main():
+    args = parse_args()
+    agg_batch(args.dir, args.metric)
+
+
+if __name__ == '__main__':
+    main()

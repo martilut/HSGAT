@@ -39,6 +39,9 @@ jobs:
       - name: Validate Python modules
         run: poetry run python -m compileall graphgym
 
+      - name: Run unit tests
+        run: poetry run python -m unittest discover
+
   cd:
     name: Package artifact
     runs-on: ubuntu-latest

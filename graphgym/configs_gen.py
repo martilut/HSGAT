@@ -239,11 +239,16 @@ def gen_grid_sample(args, config, config_budget=None, compare_alias_list=None):
                   f'{len(vars_value)} configurations saved to: {out_dir}')
 
 
-args = parse_args()
-config = load_config(args.config)
-config_budget = load_config(args.config_budget)
-if args.sample_alias is None:
-    gen_grid(args, config, config_budget)
-else:
-    alias_list = load_alias_file(args.sample_alias)
-    gen_grid_sample(args, config, config_budget, alias_list)
+def main():
+    args = parse_args()
+    config = load_config(args.config)
+    config_budget = load_config(args.config_budget)
+    if args.sample_alias is None:
+        gen_grid(args, config, config_budget)
+    else:
+        alias_list = load_alias_file(args.sample_alias)
+        gen_grid_sample(args, config, config_budget, alias_list)
+
+
+if __name__ == '__main__':
+    main()
