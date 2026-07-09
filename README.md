@@ -128,3 +128,19 @@ Supported customizable module areas include:
 - `custom_graphgym/stage/`
 - `custom_graphgym/train/`
 - `custom_graphgym/transform/`
+
+## CI/CD
+
+GitHub Actions CI/CD is configured in:
+
+- `/home/runner/work/HSGAT/HSGAT/.github/workflows/ci-cd.yml`
+
+Pipeline behavior:
+
+- **CI** (pull requests, `main`/`master` pushes, manual trigger):
+  - Installs dependencies with Poetry.
+  - Validates GraphGym shell scripts with `bash -n`.
+  - Validates Python modules with `python -m compileall graphgym`.
+- **CD** (`main`/`master` pushes or manual trigger, after CI passes):
+  - Packages `graphgym/`, `README.md`, `requirements.txt`, and `pyproject.toml`.
+  - Uploads `graphgym-project.tar.gz` as a workflow artifact.
