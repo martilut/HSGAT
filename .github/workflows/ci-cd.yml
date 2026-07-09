@@ -1,0 +1,61 @@
+name: CI/CD
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: Validate project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install --no-root
+
+      - name: Validate shell scripts
+        run: |
+          bash -n graphgym/run_single.sh
+          bash -n graphgym/run_batch.sh
+          bash -n graphgym/parallel.sh
+
+      - name: Validate Python modules
+        run: poetry run python -m compileall graphgym
+
+      - name: Run unit tests
+        run: poetry run python -m unittest discover
+
+  cd:
+    name: Package artifact
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create project archive
+        run: tar -czf graphgym-project.tar.gz graphgym README.md requirements.txt pyproject.toml
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: graphgym-project
+          path: graphgym-project.tar.gz
